@@ -23,7 +23,7 @@ import streamlit as st
 
 #from constants import API_KEY
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
  
 

@@ -50,9 +50,9 @@ if PERSIST and os.path.exists("persist"):
 
 else:
 
-  # loader = TextLoader("data/data.txt") # Use this line if you only need data.txt
+  loader = TextLoader("water.txt") # Use this line if you only need data.txt
 
-  loader = DirectoryLoader(os.path.join(os.getcwd(), 'data'))
+  #loader = DirectoryLoader(os.path.join(os.getcwd(), 'data'))
 
   if PERSIST:
 

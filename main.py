@@ -23,7 +23,7 @@ import streamlit as st
 
 #from constants import API_KEY
 
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+os.environ["OPENAI_API_KEY"] =  st.secrets["OPENAI_API_KEY"]
 
  
 

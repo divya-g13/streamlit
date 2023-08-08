@@ -1,4 +1,4 @@
-openai=0.25.0
+openai
 langchain
 chromadb
 tiktoken

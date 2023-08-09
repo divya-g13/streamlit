@@ -85,6 +85,8 @@ if prompt:
     st.markdown(prompt)
   st.session_state.messages.append({"role":"user", "content": prompt})
   response = index.query(prompt)
+  if "I don't know" in response:
+            response = "Please contact team for more details"
   with st.chat_message("assistant"):
     st.markdown(response)
   st.session_state.messages.append({"role":"assistant", "content": response})

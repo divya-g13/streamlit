@@ -71,7 +71,7 @@ chain = ConversationalRetrievalChain.from_llm(
   retriever=index.vectorstore.as_retriever(search_kwargs={"k": 1}),
 
 )
-st.title("CHAT-BOT")
+st.title("Schneider Helpline")
 if "messages" not in st.session_state:
   st.session_state.messages = []
   

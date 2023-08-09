@@ -71,42 +71,28 @@ chain = ConversationalRetrievalChain.from_llm(
   retriever=index.vectorstore.as_retriever(search_kwargs={"k": 1}),
 
 )
-#chat_history=[]
-with st.form(key='my_form'):
-    query = st.text_input("Prompt:", key='input_prompt')
-    submit_button = st.form_submit_button(label='Ask')
-
- 
-
-    if query and submit_button:
-        if query.lower() in ['quit', 'q', 'exit']:
-            st.stop()
-        #result = chain({"question": query, "chat_history": chat_history})
-        response = index.query(query)
-        
-        st.write("Answer:", response)
-        #chat_history.append((query, response))
- 
- 
- 
- 
- 
- 
- 
-def chatbot_prompt():
-    print("Chatbot: Hi! I'm your friendly chatbot. How can I assist you today?")
+st.title("CHAT-BOT")
+if "messages" not in st.session_state:
+  st.session_state.messages = []
+  
+for message in st.session_state.messages:
+  with st.chat_message(message["role"]):
+    st.markdown(message["content"])
     
-    while True:
-        user_input = input("You: ").strip().lower()
-        
-        if user_input == 'exit':
-            print("Chatbot: Goodbye! Have a great day!")
-            break
-        
-        
-        response = index.query(user_input)
-        print("Chatbot:", response)
+prompt = st.chat_input("type your question here")
+if prompt:
+  with st.chat_message("user"):
+    st.markdown(prompt)
+  st.session_state.messages.append({"role":"user", "content": prompt})
+  response = index.query(prompt)
+  with st.chat_message("assistant"):
+    st.markdown(response)
+  st.session_state.messages.append({"role":"assistant", "content": response})
+ 
+ 
+ 
+ 
+ 
  
  
 
-#chatbot_prompt()
